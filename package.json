@@ -1,0 +1,37 @@
+{
+  "name": "root",
+  "version": "1.0.0",
+  "repository": "https://github.com/martin226/nuxt-express-monorepo",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "frontend:dev": "yarn workspace frontend dev",
+    "frontend:build": "yarn workspace frontend build",
+    "frontend:start": "yarn workspace frontend start",
+    "frontend:generate": "yarn workspace frontend generate",
+    "frontend:lint": "yarn workspace frontend lint",
+    "frontend:lintfix": "yarn workspace frontend lintfix",
+    "frontend:test": "yarn workspace frontend test",
+    "backend:dev": "yarn workspace backend dev",
+    "backend:build": "yarn workspace backend build",
+    "backend:start": "yarn workspace backend start",
+    "backend:lint": "yarn workspace backend lint",
+    "backend:lintfix": "yarn workspace backend lintfix",
+    "dev": "concurrently --kill-others-on-fail \"yarn frontend:dev\"  \"yarn backend:dev\"",
+    "build": "concurrently --kill-others-on-fail \"yarn frontend:build\"  \"yarn backend:build\"",
+    "start": "concurrently --kill-others-on-fail \"yarn frontend:start\"  \"yarn backend:start\"",
+    "lint": "concurrently --kill-others-on-fail \"yarn frontend:lint\"  \"yarn backend:lint\"",
+    "lintfix": "concurrently --kill-others-on-fail \"yarn frontend:lintfix\"  \"yarn backend:lintfix\"",
+    "prepare": "husky install ./.husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-conventional": "^16.2.4",
+    "concurrently": "^7.1.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.1"
+  }
+}
